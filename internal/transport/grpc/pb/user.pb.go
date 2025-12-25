@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v3.21.12
-// source: internal/transport/grpc/proto/user.proto
+// source: internal/transport/grpc/proto/register-ms/user.proto
 
 package userv1
 
@@ -36,7 +36,7 @@ type RegistrationRequest struct {
 
 func (x *RegistrationRequest) Reset() {
 	*x = RegistrationRequest{}
-	mi := &file_internal_transport_grpc_proto_user_proto_msgTypes[0]
+	mi := &file_internal_transport_grpc_proto_register_ms_user_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +48,7 @@ func (x *RegistrationRequest) String() string {
 func (*RegistrationRequest) ProtoMessage() {}
 
 func (x *RegistrationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_transport_grpc_proto_user_proto_msgTypes[0]
+	mi := &file_internal_transport_grpc_proto_register_ms_user_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +61,7 @@ func (x *RegistrationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegistrationRequest.ProtoReflect.Descriptor instead.
 func (*RegistrationRequest) Descriptor() ([]byte, []int) {
-	return file_internal_transport_grpc_proto_user_proto_rawDescGZIP(), []int{0}
+	return file_internal_transport_grpc_proto_register_ms_user_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RegistrationRequest) GetFirstName() string {
@@ -122,7 +122,7 @@ type RegistrationResponse struct {
 
 func (x *RegistrationResponse) Reset() {
 	*x = RegistrationResponse{}
-	mi := &file_internal_transport_grpc_proto_user_proto_msgTypes[1]
+	mi := &file_internal_transport_grpc_proto_register_ms_user_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -134,7 +134,7 @@ func (x *RegistrationResponse) String() string {
 func (*RegistrationResponse) ProtoMessage() {}
 
 func (x *RegistrationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_transport_grpc_proto_user_proto_msgTypes[1]
+	mi := &file_internal_transport_grpc_proto_register_ms_user_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -147,7 +147,7 @@ func (x *RegistrationResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegistrationResponse.ProtoReflect.Descriptor instead.
 func (*RegistrationResponse) Descriptor() ([]byte, []int) {
-	return file_internal_transport_grpc_proto_user_proto_rawDescGZIP(), []int{1}
+	return file_internal_transport_grpc_proto_register_ms_user_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RegistrationResponse) GetUserId() int32 {
@@ -157,11 +157,11 @@ func (x *RegistrationResponse) GetUserId() int32 {
 	return 0
 }
 
-var File_internal_transport_grpc_proto_user_proto protoreflect.FileDescriptor
+var File_internal_transport_grpc_proto_register_ms_user_proto protoreflect.FileDescriptor
 
-const file_internal_transport_grpc_proto_user_proto_rawDesc = "" +
+const file_internal_transport_grpc_proto_register_ms_user_proto_rawDesc = "" +
 	"\n" +
-	"(internal/transport/grpc/proto/user.proto\x12\x04user\"\xd9\x01\n" +
+	"4internal/transport/grpc/proto/register-ms/user.proto\x12\x04user\"\xd9\x01\n" +
 	"\x13RegistrationRequest\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1f\n" +
@@ -178,23 +178,23 @@ const file_internal_transport_grpc_proto_user_proto_rawDesc = "" +
 	"\fRegistration\x12\x19.user.RegistrationRequest\x1a\x1a.user.RegistrationResponseB\x0eZ\f../pb;userv1b\x06proto3"
 
 var (
-	file_internal_transport_grpc_proto_user_proto_rawDescOnce sync.Once
-	file_internal_transport_grpc_proto_user_proto_rawDescData []byte
+	file_internal_transport_grpc_proto_register_ms_user_proto_rawDescOnce sync.Once
+	file_internal_transport_grpc_proto_register_ms_user_proto_rawDescData []byte
 )
 
-func file_internal_transport_grpc_proto_user_proto_rawDescGZIP() []byte {
-	file_internal_transport_grpc_proto_user_proto_rawDescOnce.Do(func() {
-		file_internal_transport_grpc_proto_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_transport_grpc_proto_user_proto_rawDesc), len(file_internal_transport_grpc_proto_user_proto_rawDesc)))
+func file_internal_transport_grpc_proto_register_ms_user_proto_rawDescGZIP() []byte {
+	file_internal_transport_grpc_proto_register_ms_user_proto_rawDescOnce.Do(func() {
+		file_internal_transport_grpc_proto_register_ms_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_transport_grpc_proto_register_ms_user_proto_rawDesc), len(file_internal_transport_grpc_proto_register_ms_user_proto_rawDesc)))
 	})
-	return file_internal_transport_grpc_proto_user_proto_rawDescData
+	return file_internal_transport_grpc_proto_register_ms_user_proto_rawDescData
 }
 
-var file_internal_transport_grpc_proto_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_internal_transport_grpc_proto_user_proto_goTypes = []any{
+var file_internal_transport_grpc_proto_register_ms_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_internal_transport_grpc_proto_register_ms_user_proto_goTypes = []any{
 	(*RegistrationRequest)(nil),  // 0: user.RegistrationRequest
 	(*RegistrationResponse)(nil), // 1: user.RegistrationResponse
 }
-var file_internal_transport_grpc_proto_user_proto_depIdxs = []int32{
+var file_internal_transport_grpc_proto_register_ms_user_proto_depIdxs = []int32{
 	0, // 0: user.UserService.Registration:input_type -> user.RegistrationRequest
 	1, // 1: user.UserService.Registration:output_type -> user.RegistrationResponse
 	1, // [1:2] is the sub-list for method output_type
@@ -204,26 +204,26 @@ var file_internal_transport_grpc_proto_user_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_internal_transport_grpc_proto_user_proto_init() }
-func file_internal_transport_grpc_proto_user_proto_init() {
-	if File_internal_transport_grpc_proto_user_proto != nil {
+func init() { file_internal_transport_grpc_proto_register_ms_user_proto_init() }
+func file_internal_transport_grpc_proto_register_ms_user_proto_init() {
+	if File_internal_transport_grpc_proto_register_ms_user_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_transport_grpc_proto_user_proto_rawDesc), len(file_internal_transport_grpc_proto_user_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_transport_grpc_proto_register_ms_user_proto_rawDesc), len(file_internal_transport_grpc_proto_register_ms_user_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_internal_transport_grpc_proto_user_proto_goTypes,
-		DependencyIndexes: file_internal_transport_grpc_proto_user_proto_depIdxs,
-		MessageInfos:      file_internal_transport_grpc_proto_user_proto_msgTypes,
+		GoTypes:           file_internal_transport_grpc_proto_register_ms_user_proto_goTypes,
+		DependencyIndexes: file_internal_transport_grpc_proto_register_ms_user_proto_depIdxs,
+		MessageInfos:      file_internal_transport_grpc_proto_register_ms_user_proto_msgTypes,
 	}.Build()
-	File_internal_transport_grpc_proto_user_proto = out.File
-	file_internal_transport_grpc_proto_user_proto_goTypes = nil
-	file_internal_transport_grpc_proto_user_proto_depIdxs = nil
+	File_internal_transport_grpc_proto_register_ms_user_proto = out.File
+	file_internal_transport_grpc_proto_register_ms_user_proto_goTypes = nil
+	file_internal_transport_grpc_proto_register_ms_user_proto_depIdxs = nil
 }

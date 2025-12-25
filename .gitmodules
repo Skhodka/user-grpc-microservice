@@ -1,0 +1,3 @@
+[submodule "internal/transport/grpc/proto"]
+	path = internal/transport/grpc/proto
+	url = https://github.com/Skhodka/proto-files-repository
