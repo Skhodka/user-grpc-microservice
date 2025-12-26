@@ -13,15 +13,15 @@ import (
 
 type UserHandler struct {
 	userv1.UnimplementedUserServiceServer
-	regUc *registration.RegistrationUC
-	log   *slog.Logger
+	regUc   *registration.RegistrationUC
+	log     *slog.Logger
 	timeout time.Duration
 }
 
 func NewUserHandler(log *slog.Logger, regUc *registration.RegistrationUC, timeout time.Duration) *UserHandler {
 	return &UserHandler{
-		log:   log,
-		regUc: regUc,
+		log:     log,
+		regUc:   regUc,
 		timeout: timeout,
 	}
 }
@@ -31,7 +31,7 @@ func (u *UserHandler) Registration(ctx context.Context, in *userv1.RegistrationR
 
 	u.log.Info("new registration request", slog.String("op", op))
 
-	ctx, cancel := context.WithTimeout(ctx,  u.timeout)
+	ctx, cancel := context.WithTimeout(ctx, u.timeout)
 	defer cancel()
 
 	regInput, err := registration.NewRegInput(

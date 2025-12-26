@@ -3,12 +3,12 @@ package registration
 import "errors"
 
 var (
-	ErrEmptyFirstName = errors.New("empty first name")
-	ErrEmptyLastName = errors.New("empty last name")
-	ErrEmptyPassword = errors.New("empty password")
+	ErrEmptyFirstName   = errors.New("empty first name")
+	ErrEmptyLastName    = errors.New("empty last name")
+	ErrEmptyPassword    = errors.New("empty password")
 	ErrEmptyPhoneNumber = errors.New("empty phone number")
-	ErrEmptyEmail = errors.New("empty email")
-	ErrEmptyAge = errors.New("empty age")
+	ErrEmptyEmail       = errors.New("empty email")
+	ErrEmptyAge         = errors.New("empty age")
 )
 
 type RegInput struct {
@@ -23,7 +23,7 @@ type RegInput struct {
 
 func NewRegInput(firstName, middleName, lastName, password, phoneNumber, email string,
 	age uint8,
-) (*RegInput, error){
+) (*RegInput, error) {
 	if !validateStringNotEmpty(firstName) {
 		return nil, ErrEmptyFirstName
 	}
@@ -43,13 +43,13 @@ func NewRegInput(firstName, middleName, lastName, password, phoneNumber, email s
 		return nil, ErrEmptyAge
 	}
 	return &RegInput{
-		FirstName: firstName,
-		MiddleName: middleName,
-		LastName: lastName,
-		Password: password,
+		FirstName:   firstName,
+		MiddleName:  middleName,
+		LastName:    lastName,
+		Password:    password,
 		PhoneNumber: phoneNumber,
-		Email: email,
-		Age: age,
+		Email:       email,
+		Age:         age,
 	}, nil
 }
 
