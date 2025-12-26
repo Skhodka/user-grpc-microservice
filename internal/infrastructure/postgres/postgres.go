@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"log/slog"
-	"usermic/internal/repository"
+	domain "usermic/internal/domain/user"
 )
 
 var (
@@ -29,12 +29,12 @@ func NewPostgresStorage(log *slog.Logger, db *sql.DB) *PostgresStorage {
 	}
 }
 
-func (p *PostgresStorage) RegUser(ctx context.Context, ur *repository.UserRecord) (int, error) {
+func (p *PostgresStorage) RegUser(ctx context.Context, ud *domain.UserDomain) (int, error) {
 	const op = "postgres.RegUser"
 
 	p.log.Info("new registration", slog.String("op", op))
 
-	pm := recordToUserModel(ur)
+	pm := domainToUserModel(ud)
 
 	row := p.db.QueryRowContext(
 		ctx,
@@ -55,7 +55,7 @@ func (p *PostgresStorage) RegUser(ctx context.Context, ur *repository.UserRecord
 	return id, nil
 }
 
-func (p *PostgresStorage) FindByEmail(ctx context.Context, email string) (*repository.UserRecord, error) {
+func (p *PostgresStorage) FindByEmail(ctx context.Context, email string) (*domain.UserDomain, error) {
 	const op = "postgres.FindByEmail"
 
 	p.log.Info("search for a user by ID", slog.String("op", op))
@@ -82,10 +82,17 @@ func (p *PostgresStorage) FindByEmail(ctx context.Context, email string) (*repos
 		}
 	}
 
-	return userModelToRecord(pm), nil
+	userOut, err := userModelToDomain(pm)
+
+	if err != nil {
+		p.log.Warn("failed to create domain", slog.String("op", op))
+		return nil, err
+	}
+
+	return userOut, nil
 }
 
-func (p *PostgresStorage) FindByPhone(ctx context.Context, phone string) (*repository.UserRecord, error) {
+func (p *PostgresStorage) FindByPhone(ctx context.Context, phone string) (*domain.UserDomain, error) {
 	const op = "postgres.FindByPhone"
 
 	p.log.Info("search for a user by ID", slog.String("op", op))
@@ -111,6 +118,12 @@ func (p *PostgresStorage) FindByPhone(ctx context.Context, phone string) (*repos
 			return nil, nil
 		}
 	}
+	userOut, err := userModelToDomain(pm)
 
-	return userModelToRecord(pm), nil
+	if err != nil {
+		p.log.Warn("failed to create domain", slog.String("op", op))
+		return nil, err
+	}
+
+	return userOut, nil
 }

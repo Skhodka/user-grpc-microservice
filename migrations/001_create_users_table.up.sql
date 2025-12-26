@@ -3,10 +3,11 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR(255) NOT NULL,
     middle_name VARCHAR(255),
     last_name VARCHAR(255) NOT NULL,
-    pass_hash BYTEA NOT NULL,
+    pass_hash TEXT NOT NULL,
     phone_number VARCHAR(11) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     age INT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_email ON users (email);
+CREATE INDEX IF NOT EXISTS idx_phone_number ON users (phone_number);

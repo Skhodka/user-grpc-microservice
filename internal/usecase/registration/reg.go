@@ -46,46 +46,35 @@ func (r *RegistrationUC) Registration(ctx context.Context, regInput *RegInput) (
 	hashPassword, err := domain.NewHashPassword(string(hash))
 
 	if err != nil {
-		r.log.Warn("failed hash password", slog.String("op", op), slog.String("error", err.Error()))
-		return badId, err
+		r.log.Warn("failed to create hash password", slog.String("op", op), slog.String("error", err.Error()))
 	}
 
-	userDomain, err := domain.NewUserDomain(
-		regInput.FirstName,
-		regInput.MiddleName,
-		regInput.LastName,
-		*hashPassword,
-		regInput.PhoneNumber,
-		regInput.Email,
-		regInput.Age,
-	)
+	userInput, err := inputToDomain(regInput, hashPassword)
 
 	if err != nil {
 		r.log.Warn("failed to create user domain", slog.String("op", op), slog.String("error", err.Error()))
 		return badId, err
 	}
 
-	upm, err := r.repo.FindByEmail(ctx, userDomain.Email)
+	userOut, err := r.repo.FindByEmail(ctx, userInput.Email)
 	if err != nil {
 		return badId, err
 	}
-	if upm != nil {
+	if userOut != nil {
 		r.log.Info("user already exists", slog.String("op", op))
 		return badId, ErrUserAlreadyExists
 	}
 
-	upm, err = r.repo.FindByPhone(ctx, userDomain.PhoneNumber)
+	userOut, err = r.repo.FindByPhone(ctx, userInput.PhoneNumber)
 	if err != nil {
 		return badId, err
 	}
-	if upm != nil {
+	if userOut != nil {
 		r.log.Info("user already exists", slog.String("op", op))
 		return badId, ErrUserAlreadyExists
 	}
 
-	userRecord := domainToRecord(userDomain)
-
-	id, err := r.repo.RegUser(ctx, userRecord)
+	id, err := r.repo.RegUser(ctx, userInput)
 
 	if err != nil {
 		r.log.Info("failed reg user", slog.String("op", op))
